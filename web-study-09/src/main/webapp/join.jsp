@@ -28,7 +28,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>암 호</td>
+				<td>암호</td>
 				<td><input type="password" name="pwd" size=20 >* </td>
 			</tr>
 			<tr >
