@@ -40,7 +40,7 @@ public class ProductWriteServlet extends HttpServlet {
 		String pictureUrl = multi.getFilesystemName("pictureUrl");
 		String description = multi.getParameter("description");
 		
-		//시스템에 출력해봄으로써 더블체크:
+		//시스템에 출력해봄으로써 더블체크 (안써도됨):
 		System.out.println("name: " + name);
 		System.out.println("price: " + price);
 		System.out.println("pictureUrl: " + pictureUrl);
