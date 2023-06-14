@@ -49,8 +49,10 @@ public class ProductUpdateServlet extends HttpServlet {
 		String description = multi.getParameter("description");
 		
 		System.out.println("pictureUrl :" + pictureUrl);
+		
+		//수정하지 않았을 떄 기본 사진 불러오기:
 		if(pictureUrl == null) {
-			pictureUrl = multi.getParameter("nonmakeImg"); //수정하지 않았을 떄 기본 사진 불러오기
+			pictureUrl = multi.getParameter("nonmakeImg");
 		}
 		
 		ProductVO vo = new ProductVO();
