@@ -21,61 +21,67 @@ public class Dispatcher implements Filter{
    @Override
    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
          throws IOException, ServletException {
-//      System.out.println("ÀÌÂÊÀ¸·Î ¿À´Ï?");
+
+//	   -ì‹œìŠ¤í…œì— ì¶œë ¥:
+//	   System.out.println("ì´ìª½ìœ¼ë¡œ ì˜¤ë‹ˆ?");
 	   
 	   HttpServletRequest request = (HttpServletRequest)req;
 	   HttpServletResponse response = (HttpServletResponse)res;
 
-	   //¿äÃ» È®ÀÎ:
-//	   System.out.println("ÄÁÅØÃ÷ ÆĞ½º: " + request.getContextPath());
-//	   System.out.println("½Äº°ÀÚ ÁÖ¼Ò: " + request.getRequestURI());
-//	   System.out.println("ÀüÃ¼ÁÖ¼Ò: " + request.getRequestURL());
+//	   -ìš”ì²­ í™•ì¸:
+//	   System.out.println("ì»¨í…ì¸  íŒ¨ìŠ¤: " + request.getContextPath());
+//	   System.out.println("ì‹ë³„ì ì£¼ì†Œ: " + request.getRequestURI());
+//	   System.out.println("ì „ì²´ì£¼ì†Œ: " + request.getRequestURL());
 	   
-	   //user ÆÄ½ÌÇÏ±â:
-	   //endPoint±¸ÇÏ´Â ¹ı(/user) => getRequestURI()- getContextPath() == (/reflect/user) - (/reflect)
+//	   -user íŒŒì‹±í•˜ê¸°:
+//	   -endPointêµ¬í•˜ëŠ” ë²•(/user) => getRequestURI()- getContextPath() == (/reflect/user) - (/reflect) == (/user)
 	   String endPoint = request.getRequestURI().replaceAll(request.getContextPath(), "");
-	   System.out.println("endPoint: " + endPoint);
+//	   System.out.println("endPoint: " + endPoint);
 	   
-	   UserController userController = new UserController();
-	   
-	   //°´Ã¼ »ı¼ºÈÄ Ãâ·Â:
+//	   -ê°ì²´ ìƒì„±í›„ ì¶œë ¥:
+	   UserController userController = new UserController();	   
 //	   if(endPoint.equals("/join")) {
 //		   userController.join();
 //	   } else if(endPoint.equals("/login")) {
 //		   userController.login();
-//	   }
+//	   } else if(endPoint.equals("/user")) {
+//		   userController.user();
+//	   } else if(endPoint.equals("/hello")) {
+//		   userController.hello();
+//	   } 
 	   
-	   //¸Ş¼­µå ¸î°³ÀÎÁö È®ÀÎ°¡´É:
+//	   -ë©”ì„œë“œ ëª‡ê°œì¸ì§€ í™•ì¸ê°€ëŠ¥:
 	   Method[] methods = userController.getClass().getDeclaredMethods();
-/*
-	   System.out.println(methods);
 	   
-	   for(Method m : methods)
-		   System.out.println(m);
-		   
-	   //ÀÌ¸§¸¸ Ãâ·Â:
-	   for(Method m : methods)
-		   System.out.println(m.getName());
-		   
-	   for(Method m : methods) {
-		   if(endPoint.equals("/" + m.getName())) {
-			   try {
-				   m.invoke(userController);
-			   } catch(Exception e) {
-				   e.printStackTrace();
-			   }
-		   }
-	   }	   
- */	   
+//	   System.out.println(methods);
+//	   -ìœ„ì˜ ë¼ì¸ì´ë‘ ë¹„êµ:
+//	   for(Method m : methods)
+//		   System.out.println(m);
+	   
+//	   -ì´ë¦„ë§Œ ì¶œë ¥(ìœ„ì˜ ì½”ë“œë‘ ë¹„êµ):
+//	   for(Method m : methods)
+//		   System.out.println(m.getName());
+	   
+//	   -ë©”ì„œë“œ ì•ˆì— ìˆëŠ” ë¬¸ì¥ë“¤ ì¶œë ¥:
+//	   for(Method m : methods) {
+//		   if(endPoint.equals("/" + m.getName())) {
+//			   try {
+//				   m.invoke(userController);
+//			   } catch(Exception e) {
+//				   e.printStackTrace();
+//			   }
+//		   }
+//	   }	   
+
+//	   -ì˜ˆì‹œ) ì„œë²„ì— 'user/join2'ë¥¼ ì¹˜ê²Œ ë˜ë©´, join.jspë¶ˆëŸ¬ì™€ì„œ ì•ˆì— ë‚´ìš© ì¶œë ¥:
 	   for(Method m : methods) {
 		   Annotation annotation = m.getDeclaredAnnotation(RequestMapping.class);
 		   RequestMapping mapping = (RequestMapping)annotation;
-//		   System.out.println(mapping.value());
+		   System.out.println(mapping.value());
 		   
 		   if(mapping.value().equals(endPoint)) {
 			   try {
 				   String path = (String)m.invoke(userController);
-				   
 				   RequestDispatcher dis = request.getRequestDispatcher(path);
 				   dis.forward(request, response);
 			   } catch(Exception e) {
@@ -84,25 +90,5 @@ public class Dispatcher implements Filter{
 		   }
 	   }
    }
-   
-
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
