@@ -11,6 +11,7 @@ import com.saeyan.controller.action.BoardViewAction;
 import com.saeyan.controller.action.BoardWriteAction;
 import com.saeyan.controller.action.BoardWriteFormAction;
 
+//ActionFactory ==> Handler Adaptor(객체생성하면, Dispatcher Servlet에서 그 객체를 호출해 실제 메서드 사용)
 public class ActionFactory {
 	
 	private static ActionFactory instance = new ActionFactory();
