@@ -15,7 +15,7 @@ public class Crawling {
 			Document doc = null;
 			
 			try {
-				 //url(네이버 스포츠야구면)사이트 접속해서 html문서 파일을 끌어옴:
+				 //url(네이버 스포츠야구면)사이트 접속해서 html문서 파일을 끌어오기:
 				doc = Jsoup.connect(url).get();
 			} catch (IOException e) {
 				e.printStackTrace();
