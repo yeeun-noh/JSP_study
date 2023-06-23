@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+#wrap{
+	width: 971px;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1{
+    color: green;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    line-height: 24px;
+}
+<!--border-collapse : collapse 겹치는 부분 상쇄-->
+table td, td{
+    border: #d3d3d3 solid 1px;
+    padding: 5px;
+}
+
+th{
+    background: yellowgreen;
+    width:120px;
+}
+img{
+    width: 220px;
+    height: 300px;
+}
+<!--밑줄 해제-->
+a{
+    text-decoration: none;  
+    color: #000;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: green;
+}
