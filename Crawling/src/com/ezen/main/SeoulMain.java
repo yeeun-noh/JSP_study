@@ -38,7 +38,7 @@ public class SeoulMain {
 				Elements title = doc.select("ul.article-list li.item div.infor-element span.title");
 //				System.out.println(title);
 				
-//				-사이트에서 특정 부분 가져오기 (리뷰 점수):
+//				-사이트에서 특정 부분 가져오기 (리뷰+ 점수):
 				Elements score = doc.select("ul.article-list li.item div.infor-element span.trip-text");
 //				System.out.println(score);
 				
