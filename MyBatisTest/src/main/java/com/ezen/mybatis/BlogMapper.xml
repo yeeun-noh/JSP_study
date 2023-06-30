@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.mybatis.BlogMapper">
+  
+ <!-- id==메서드명, resultType==반환타입, parameterType==파라미터타입 -->
+ <!-- ? 대신 #{} 사용 -->
+ 
+	<select id="selectOne" resultType="com.ezen.mybatis.TestVO" parameterType="int">
+	select * from test where id = #{id}
+	</select>
+
+	<select id="selectAllList" resultType="com.ezen.mybatis.TestVO">
+	select * from test
+	</select>
+	
+	<insert id="insertTest">
+	insert into test(name, phone, address) values(#{name}, #{phone}, #{address})
+	</insert>
+	
+	<update id="updateTest">
+	update test set name=#{name}, phone=#{phone}, address=#{address} where id=#{id}
+	</update>
+	
+	<delete id="deleteTest">
+	delete from test where id = #{id}
+	</delete>
+</mapper>
